@@ -90,8 +90,17 @@ class UserCollection {
       return false;
     } else {
       this[tickets].splice(index, 1);
-      return true;
+
+      return console.log("all data deleted!");
     }
+  }
+  // bulk delete by user name
+  bulkDelete(userName) {
+    let userTickets = this.findTicketByUserName(userName);
+    let deleteResult = userTickets.map((ticket) => this.deleteById(ticket.id));
+    let data = JSON.stringify(deleteResult);
+    writeFile(dbPath, data);
+    return deleteResult;
   }
 }
 

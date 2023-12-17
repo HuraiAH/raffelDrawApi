@@ -8,13 +8,18 @@ const {
   updateById,
   updateByUsName,
   deleteById,
+  bulkDelete,
 } = require("./controller");
 
 // get put delete related router by Id
 router.route("/t/:id").get(findTicketById).put(updateById).delete(deleteById);
 
 // get put delete related router by UserName
-router.route("/u/:userName").get(findByUserName).put(updateByUsName);
+router
+  .route("/u/:userName")
+  .get(findByUserName)
+  .put(updateByUsName)
+  .delete(bulkDelete);
 
 // get and post req
 router.post("/", createTicket);

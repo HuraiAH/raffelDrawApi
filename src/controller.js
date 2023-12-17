@@ -66,3 +66,12 @@ exports.deleteById = (req, res) => {
   }
   res.json(updTic);
 };
+// bulk delete by user name
+exports.bulkDelete = (req, res) => {
+  const userName = req.params.userName;
+  let dltResult = collection.bulkDelete(userName);
+  if (!dltResult) {
+    res.json("404 not found ok gadha !");
+  }
+  res.json(dltResult);
+};
